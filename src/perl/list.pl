@@ -84,6 +84,7 @@ print "\n";
 ####################################################
 
 # test bind(unit) == identity
+print "identity 1\n";
 $identity = bindm(\&wrap);
 @arr = (1,2,3);
 my $a = &$identity(\@arr);
@@ -92,4 +93,23 @@ foreach my $item (@{$a}) {
 }
 print "\n";
 
+# test bind(func) == func ?
+# bind(wrap("candy"), more) // is equivalent to
+# more("candy")
+# bindm(func)(wrap("a")) == "a" ??
+# where func is a -> M
 
+print "identity 2\n";
+
+$a = &{bindm(\&emit_array)}(wrap("a"));
+$b = emit_array("a");
+
+foreach my $item (@{$a}) {
+    print "$item ";
+}
+print "\n";
+
+foreach my $item (@{$b}) {
+    print "$item ";
+}
+print "\n";
