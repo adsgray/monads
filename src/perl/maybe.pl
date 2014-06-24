@@ -76,6 +76,11 @@ my $lifted = lift(\&appendhi);
 print appendhi("wut") . "\n";
 &$printmaybe(&$lifted("lifted wut"));
 
-
 ####################################################
 
+# test bind(unit) == identity
+$identity = bindm(\&wrap);
+$a = wrap("wut");
+my $b = &$identity($a);
+&$printmaybe($a);
+&$printmaybe($b);
