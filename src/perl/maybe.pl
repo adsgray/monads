@@ -29,7 +29,7 @@ sub bindm($) {
             return &$func($val);
         } else {
             # if val is not defined don't perform operation
-            return wrap($val);
+            return $wrapped;
         }
     }
 }
