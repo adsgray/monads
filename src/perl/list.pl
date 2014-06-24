@@ -81,6 +81,15 @@ for my $item (@{$after}) {
 
 print "\n";
 
-
 ####################################################
+
+# test bind(unit) == identity
+$identity = bindm(\&wrap);
+@arr = (1,2,3);
+my $a = &$identity(\@arr);
+foreach my $item (@{$a}) {
+    print "$item ";
+}
+print "\n";
+
 
