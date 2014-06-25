@@ -34,6 +34,20 @@ sub bindm($) {
     }
 }
 
+# make wrap() into a functor?
+# applies func to the value inside wrap
+# returns wrapped result
+sub fmap($$) {
+    my ($wrap, $func) = @_;
+    my $val = $wrap->{"val"};
+
+    if (defined($val)) {
+        $wut = &$func($val);
+        return wrap(&$func($val));
+    } else {
+        return $wrap;
+    }
+}
 
 # takes a raw->raw func and turns
 # it into a function that returns wrapped values
@@ -84,3 +98,8 @@ $a = wrap("wut");
 my $b = &$identity($a);
 &$printmaybe($a);
 &$printmaybe($b);
+
+print "test fmap\n";
+my $thing = wrap("fmap!");
+# should print out "fmap! hi";
+&$printmaybe(fmap($thing, \&appendhi));
