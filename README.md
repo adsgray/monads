@@ -10,3 +10,4 @@ various languages to see if it helps me understand Monads.
 * [Monads through Pictures](http://www.bolour.com/papers/monads-through-pictures.html)
 * [Monads are Elephants Part 3](http://james-iry.blogspot.ca/2007/10/monads-are-elephants-part-3.html)
 * [Applicatives are generalized functors](http://hseeberger.wordpress.com/2011/01/31/applicatives-are-generalized-functors/)
+* [Applicative Functors](http://www.berniepope.id.au/docs/applicative.pdf)
