@@ -36,6 +36,18 @@ sub bindm($) {
     }
 }
 
+# this is list map
+sub fmap($$) {
+    my ($aref, $func) = @_;
+    my @ret = ();
+
+    foreach my $elem (@$aref) {
+        my $val = &$func($elem);
+        push @ret, $val;
+    }
+    return \@ret;
+}
+
 
 # takes a raw->raw func and turns
 # it into a function that returns wrapped values
@@ -110,6 +122,18 @@ foreach my $item (@{$a}) {
 print "\n";
 
 foreach my $item (@{$b}) {
+    print "$item ";
+}
+print "\n";
+
+####################################################
+
+print "test fmap\n";
+my @arr = (1,2,3,4,5);
+my $arr2 = fmap(\@arr, \&appendhi);
+
+# should print "1 hi 2 hi 3 hi 4 hi 5 hi"
+foreach my $item (@{$arr2}) {
     print "$item ";
 }
 print "\n";
